@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export default class GreenApiService {
   constructor() {
-    this.baseUrl = '/wa-api/waInstance';
+    this.baseUrl = import.meta.env.VITE_API_BASE_URL || 'https://api.green-api.com/waInstance';
   }
 
   validateUrl(url) {

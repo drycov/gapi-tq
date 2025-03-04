@@ -7,6 +7,7 @@ export default defineConfig({
   base: './',
   build: {
     outDir: 'dist',
+    sourcemap: true
   },
   server: {
     port: 3000,
@@ -17,6 +18,11 @@ export default defineConfig({
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path.replace(/^\/wa-api/, '')
+      },
+      '/api': {
+        target: 'https://api.green-api.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
       }
     }
   },
