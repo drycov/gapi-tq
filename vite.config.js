@@ -7,18 +7,18 @@ export default defineConfig({
   base: './',
   build: {
     outDir: 'dist',
-    sourcemap: true
+    sourcemap: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor': ['vue', 'axios']
+        }
+      }
+    }
   },
   server: {
     port: 3000,
-    open: true,
     proxy: {
-      '/wa-api': {
-        target: 'https://7105.api.greenapi.com',
-        changeOrigin: true,
-        secure: false,
-        rewrite: (path) => path.replace(/^\/wa-api/, '')
-      },
       '/api': {
         target: 'https://api.green-api.com',
         changeOrigin: true,
