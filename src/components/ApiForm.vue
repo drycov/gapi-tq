@@ -93,6 +93,8 @@
         sendFileByUrl</button>
       </div>
     </form>
+    <p>https://disk.yandex.kz/i/Kek3d950GCe2VA</p>
+    <P>Resume.pdf</P>
   </div>
 </template>
 
