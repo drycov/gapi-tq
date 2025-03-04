@@ -1,6 +1,16 @@
 <template>
   <div class="response-container">
-    <h2>Результат запроса</h2>
+    <div class="header">
+      <h2>Результат запроса</h2>
+      <button 
+        v-if="formattedResponse" 
+        @click="clearResponse" 
+        class="clear-button"
+        title="Очистить результат"
+      >
+        ✕
+      </button>
+    </div>
     <transition name="fade">
       <div v-if="showError" class="error-notification">
         <div class="error-content">
@@ -51,6 +61,9 @@ export default {
     clearError() {
       this.showError = false;
       this.errorMessage = '';
+    },
+    clearResponse() {
+      this.$emit('update:response', null);
     }
   },
   computed: {
@@ -168,6 +181,35 @@ h2 {
 .fade-leave-to {
   opacity: 0;
   transform: translateX(30px);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.clear-button {
+  position: absolute;
+  right: 0;
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}
+
+.clear-button:hover {
+  color: #dc2626;
+  background-color: rgba(220, 38, 38, 0.1);
 }
 
 @media (max-width: 768px) {
